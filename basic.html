@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CodingWith - demonstration of moment.js</title>
+    <script src="scripts/moment.js" type="text/javascript"></script>
+    <script>
+        function getDate() {
+            var theDate = moment().format("MM/DD/YYYY hh:mm:ss a");;
+
+            var mySpan = document.getElementById("demoSpan");
+
+            mySpan.innerHTML = "The date is " + theDate;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h2>Basic moment.js demonstration</h2>
+        <input type="button" value="Get Date" onclick="getDate()" /><br />
+        <span id="demoSpan"></span>
+    </div>
+</body>
+</html>
