@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Coding With - tinkering with moment.js</title>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+<script type="text/javascript">
+function getDate() {
+	console.info("getDate start");
+	try {
+		var momentDate = moment();
+		
+		//Raw date
+		jQuery("#displayMoment").text(momentDate);
+		
+		//Format date
+		jQuery("#formatDate1").text(momentDate.format('MM/DD/YYYY'));
+		jQuery("#formatDate2").text(momentDate.format('Do MMM YYYY'));
+		jQuery("#formatDate3").text(momentDate.format('Do MMM YYYY hh:mm a'));
+		jQuery("#formatDate4").text(momentDate.format('MMM, DD, YYYY'));
+		
+		//Date from timestamp
+		var timestamp = 1406808000; //31st July 2014
+		var dateFromTimestamp = moment.unix(timestamp);
+		jQuery("#formatDate5").text(dateFromTimestamp.format('MMM, DD, YYYY'));
+		
+		//Get timestamp
+		var timestamp2 = moment().unix();
+		jQuery("#formatDate6").text(timestamp2);
+		
+		//Humanize
+		var humanize = moment.duration(25, "hours").humanize();  
+		jQuery("#formatDate7").text(humanize);
+		var humanize2 = moment.duration(2, "minutes").humanize(); // 2 minutes
+		jQuery("#formatDate8").text(humanize2);
+		
+		//Days in month
+		var daysInMonth = moment("2012-02", "YYYY-MM").daysInMonth() // 29
+		jQuery("#formatDate9").text(daysInMonth);
+		var daysInMonth = moment("2013-02", "YYYY-MM").daysInMonth() // 28
+		jQuery("#formatDate10").text(daysInMonth);
+
+		//Date difference
+		var date1 = moment([2007, 0, 29]);
+		var date2 = moment([2007, 0, 28]);
+		var difference = date1.diff(date2, "hours") // 86400000
+		jQuery("#formatDate11").text(difference);
+		}
+	catch(err) {
+		console.info(err.message);
+	}
+}
+
+
+
+</script>
+</head>
+<body>
+
+	<input type="button" value="Refresh Date" onClick="getDate()" /><br />
+	<h4>Raw date</h4>
+	<label>Raw date : </label><span id="displayMoment">What is the date</span><br />
+
+	<hr>
+	<h4>Formatted date</h4>
+	<label>Format date (MM/DD/YYYY): </label><span id="formatDate1">formatted date</span><br />
+	<label>Format date (Do MM YYYY): </label><span id="formatDate2">formatted date</span><br />
+	<label>Format date (Do MM YYYY hh:mm a): </label><span id="formatDate3">formatted date</span><br />
+	<label>Format date (MMM, DD, YYYY): </label><span id="formatDate4">formatted date</span><br />
+	<label>Format date (MMM, DD, YYYY from timestamp): </label><span id="formatDate5">formatted date</span><br />
+	
+	<hr>
+	<h4>Timestamp</h4>
+	<label>Timestamp: </label><span id="formatDate6">timestamp</span><br />
+	
+	<hr>
+	<h4>Humanize</h4>
+	<label>Humanize (25 hours = a day): </label><span id="formatDate7">humanize</span><br />
+	<label>Humanize (2 minutes): </label><span id="formatDate8">humanize</span><br />
+	
+	<hr>
+	<h4>Days in month</h4>
+	<label># of days in February 2012: </label><span id="formatDate9">feb 2012</span><br />
+	<label># of days in February 2013: </label><span id="formatDate10">feb 2013</span><br />
+	
+	<hr>
+	<h4>Date difference</h4>
+	<label>Difference: </label><span id="formatDate11">feb 2012</span><br />
+	
+	<hr>
+	<h4>Reference</h4>
+	<a href="http://momentjs.com/docs/" target="_blank">Moment documentation</a>
+	
+	<script>
+	getDate();
+	</script>
+	
+</body>
+</html>
